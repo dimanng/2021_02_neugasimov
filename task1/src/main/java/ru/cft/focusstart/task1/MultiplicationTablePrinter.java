@@ -4,14 +4,15 @@ import java.util.Scanner;
 
 public class MultiplicationTablePrinter {
     public void run() {
-
+        final int lowerBound = 1;
+        final int upperBound = 32;
         System.out.println("Введите размер таблицы от 1 до 32: ");
 
         Scanner scanner = new Scanner(System.in);
         int size;
         try {
             size = scanner.nextInt();
-            if (size < 1 || size > 32) {
+            if (size < lowerBound || size > upperBound) {
                 System.out.println("Введенное число не находится в диапазоне от 1 до 32");
             } else {
                 int maxCellSize = DigitUtils.getCountsOfDigits(size * size);
