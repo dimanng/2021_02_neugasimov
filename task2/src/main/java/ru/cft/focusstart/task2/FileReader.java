@@ -2,19 +2,30 @@ package ru.cft.focusstart.task2;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileReader {
-    public String getFiguresArgs() throws FileNotFoundException {
-        StringBuilder params = new StringBuilder();
-        try (Scanner scanner = new Scanner(new FileInputStream("C:\\FocusStart\\task2\\src\\main\\java\\ru\\cft\\focusstart\\task2\\input.txt"))){
-            for(int i = 0; i < 2; i++){
-                params.append(scanner.nextLine());
-            }
+    String fileName;
 
-        }
-        return params.toString();
+    public FileReader(String fileName) {
+        this.fileName = fileName;
     }
 
-
+    public ArrayList getFiguresArgs() throws FileNotFoundException {
+        ArrayList list = new ArrayList();
+        try (Scanner scanner = new Scanner(new FileInputStream(fileName))) {
+            list.add(scanner.nextLine());
+            int count = 0;
+            while(scanner.hasNext()){
+                list.add(scanner.nextDouble());
+                count++;
+                if (count > 3){
+                    System.out.println("Ошибка! Проверьте количество параметров");
+                    break;
+                }
+            }
+        }
+        return list;
+    }
 }
