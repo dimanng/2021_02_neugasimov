@@ -5,24 +5,31 @@ public class RowBuilder {
     private RowBuilder() {
     }
 
-    static final char symbolMinus = '-';
-    static final char symbolPlus = '+';
-    static final char symbolSpace = ' ';
+    private static final char SYMBOL_MINUS = '-';
+    private static final char SYMBOL_PLUS = '+';
+    private static final char SYMBOL_SPACE = ' ';
 
-    static void printString(int maxCellSize, int index, int size, StringBuilder table) {    //Метод печати разделителя строк
-        if (index == 0) {
-            for (int k = 1; k <= DigitUtils.getCountsOfDigits(size); k++) {
-                table.append(symbolMinus);
+    public static String printString(int maxCellSize, int size) {    //Метод печати разделителя строк
+        StringBuilder separatorBuilder = new StringBuilder();
+
+        for (int i = 0; i <= size; i++) {
+            if (i == 0) {
+                for (int k = 1; k <= DigitUtils.getCountsOfDigits(size); k++) {
+                    separatorBuilder.append(SYMBOL_MINUS);
+                }
+            } else {
+                for (int k = 1; k <= maxCellSize; k++) {
+                    separatorBuilder.append(SYMBOL_MINUS);
+                }
             }
-        } else {
-            for (int k = 1; k <= maxCellSize; k++) {
-                table.append(symbolMinus);
+            if (i < size) {
+                separatorBuilder.append(SYMBOL_PLUS);
             }
         }
-        if (index < size) {
-            table.append(symbolPlus);
-        }
+        return separatorBuilder.toString();
     }
+
+
 
     static void printSpaces(int maxCellSize, int size, int item, int index, StringBuilder table) {  //Метод печати пробелом перед числом в ячейке
 
@@ -31,12 +38,12 @@ public class RowBuilder {
         if (index == 0) {
             countsOfSpaces = DigitUtils.getCountsOfDigits(size) - DigitUtils.getCountsOfDigits(item);
             for (int i = 0; i < countsOfSpaces; i++) {
-                table.append(symbolSpace);
+                table.append(SYMBOL_SPACE);
             }
         } else {
             countsOfSpaces = maxCellSize - DigitUtils.getCountsOfDigits(item);
             for (int i = 0; i < countsOfSpaces; i++) {
-                table.append(symbolSpace);
+                table.append(SYMBOL_SPACE);
             }
         }
     }
