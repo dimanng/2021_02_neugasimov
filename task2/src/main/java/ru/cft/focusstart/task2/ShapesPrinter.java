@@ -5,9 +5,6 @@ import java.util.ArrayList;
 
 public class ShapesPrinter {
 
-
-
-
     public void Run() throws FileNotFoundException {
         FileReader fileReader = new FileReader("input.txt");
         ArrayList listArgs = fileReader.getFiguresArgs();
@@ -54,6 +51,5 @@ public class ShapesPrinter {
                 System.out.println("Неизвестный тип фигуры");
                 break;
         }
-
     }
 }
