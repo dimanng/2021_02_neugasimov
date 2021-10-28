@@ -3,10 +3,10 @@ package ru.cft.focusstart.task1;
 import java.util.Scanner;
 
 public class MultiplicationTablePrinter {
-    public void run() {
-        final int LOWER_BOUND = 1;
-        final int UPPER_BOUND = 32;
+    private final int LOWER_BOUND = 1;
+    private final int UPPER_BOUND = 32;
 
+    public void run() {
         System.out.println("Введите размер таблицы от 1 до 32: ");
         Scanner scanner = new Scanner(System.in);
         int size;

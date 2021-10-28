@@ -10,17 +10,15 @@ public class RowBuilder {
     private static final char SYMBOL_SPACE = ' ';
 
     public static String printString(int maxCellSize, int size) {    //Метод печати разделителя строк
-        StringBuilder separatorBuilder = new StringBuilder();
-
-        for (int i = 0; i <= size; i++) {
-            if (i == 0) {
-                for (int k = 1; k <= DigitUtils.getCountsOfDigits(size); k++) {
-                    separatorBuilder.append(SYMBOL_MINUS);
-                }
-            } else {
-                for (int k = 1; k <= maxCellSize; k++) {
-                    separatorBuilder.append(SYMBOL_MINUS);
-                }
+        int capacity = (maxCellSize + 1) * size + DigitUtils.getCountsOfDigits(size);
+        StringBuilder separatorBuilder = new StringBuilder(capacity);
+        for (int k = 1; k <= DigitUtils.getCountsOfDigits(size); k++) {
+            separatorBuilder.append(SYMBOL_MINUS);
+        }
+        separatorBuilder.append(SYMBOL_PLUS);
+        for (int i = 1; i <= size; i++) {
+            for (int k = 1; k <= maxCellSize; k++) {
+                separatorBuilder.append(SYMBOL_MINUS);
             }
             if (i < size) {
                 separatorBuilder.append(SYMBOL_PLUS);
@@ -28,8 +26,6 @@ public class RowBuilder {
         }
         return separatorBuilder.toString();
     }
-
-
 
     static void printSpaces(int maxCellSize, int size, int item, int index, StringBuilder table) {  //Метод печати пробелом перед числом в ячейке
 
