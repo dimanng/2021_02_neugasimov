@@ -18,11 +18,13 @@ public class Circle implements Shape {
 
     @Override
     public double getArea() {
-        return Math.PI * Math.pow(radius, 2);
+        double area = MathMethods.roundToTwoDigits(Math.PI * Math.pow(radius, 2));
+        return area;
     }
 
     @Override
     public double getPerimeter() {
-        return 2 * Math.PI * radius;
+        double perimeter = MathMethods.roundToTwoDigits(2 * Math.PI * radius);
+        return perimeter;
     }
 }

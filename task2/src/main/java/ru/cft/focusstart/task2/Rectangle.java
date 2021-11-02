@@ -20,16 +20,19 @@ public class Rectangle implements Shape{
 
     public double getDiagonal(){
         double diagonal = Math.sqrt(Math.pow(side1, 2) + Math.pow(side2, 2));
+        diagonal = MathMethods.roundToTwoDigits(diagonal);
         return diagonal;
     }
 
     @Override
     public double getArea() {
-        return side1 * side2;
+        double area = MathMethods.roundToTwoDigits(side1 * side2);
+        return area;
     }
 
     @Override
     public double getPerimeter() {
-        return (side1 + side2) * 2;
+        double perimeter = MathMethods.roundToTwoDigits((side1 + side2) * 2);
+        return perimeter;
     }
 }

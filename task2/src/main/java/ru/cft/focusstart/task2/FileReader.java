@@ -1,8 +1,12 @@
 package ru.cft.focusstart.task2;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileReader {
@@ -12,18 +16,14 @@ public class FileReader {
         this.fileName = fileName;
     }
 
-    public ArrayList getFiguresArgs() throws FileNotFoundException {
-        ArrayList list = new ArrayList();
+    private static final Logger log = LoggerFactory.getLogger(FileReader.class.getName());
+
+    public List<String> getFiguresArgs() throws FileNotFoundException {
+        List<String> list = new ArrayList();
         try (Scanner scanner = new Scanner(new FileInputStream(fileName))) {
-            list.add(scanner.nextLine());
-            int count = 0;
+            log.info("File {} opened", fileName);
             while(scanner.hasNext()){
-                list.add(scanner.nextDouble());
-                count++;
-                if (count > 3){
-                    System.out.println("Ошибка! Проверьте количество параметров");
-                    break;
-                }
+                list.add(scanner.nextLine());
             }
         }
         return list;

@@ -15,7 +15,7 @@ public class TriangleMethodsTest {
     @Test
     public void triangleAreaTest(){
         double area = triangle.getArea();
-        Assertions.assertEquals(10.8, area);
+        Assertions.assertEquals(10.83, area);
     }
 
     @Test

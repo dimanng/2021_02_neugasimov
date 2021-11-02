@@ -27,19 +27,19 @@ public class Triangle implements Shape {
     public double getAngle1() {
         double cos1 = (Math.pow(side2, 2) + Math.pow(side3, 2) - Math.pow(side1, 2)) / (2 * side2 * side3);
         double angle1 = Math.toDegrees(Math.acos(cos1));
-        angle1 = Math.round(angle1 * 10.0) / 10.0;
+        angle1 = MathMethods.roundToTwoDigits(angle1);
         return angle1;
     }
     public double getAngle2() {
         double cos2 = (Math.pow(side1, 2) + Math.pow(side3, 2) - Math.pow(side2, 2)) / (2 * side1 * side3);
         double angle2 = Math.toDegrees(Math.acos(cos2));
-        angle2 = Math.round(angle2 * 10.0) / 10.0;
+        angle2 = MathMethods.roundToTwoDigits(angle2);
         return angle2;
     }
     public double getAngle3() {
         double cos3 = (Math.pow(side1, 2) + Math.pow(side2, 2) - Math.pow(side3, 2)) / (2 * side1 * side2);
         double angle3 = Math.toDegrees(Math.acos(cos3));
-        angle3 = Math.round(angle3 * 10.0) / 10.0;
+        angle3 = MathMethods.roundToTwoDigits(angle3);
         return angle3;
     }
 
@@ -47,7 +47,7 @@ public class Triangle implements Shape {
     public double getArea() {
         double semiPerimeter = getPerimeter() / 2;
         double area = Math.sqrt(semiPerimeter * (semiPerimeter - side1) * (semiPerimeter - side2) * (semiPerimeter - side3));
-        area = Math.round(area * 10.0) / 10.0;
+        area = MathMethods.roundToTwoDigits(area);
         return area;
     }
 
