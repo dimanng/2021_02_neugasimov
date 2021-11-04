@@ -8,7 +8,7 @@ public class ShapesPrinter {
         FileReader fileReader = new FileReader(inputFileName);
         List<String> listArgs = fileReader.getFiguresArgs();
         Shape shape = new ShapeParser().parse(listArgs);
-        String formatedShape = new ShapeFormater().format(shape);
-        printer.print(formatedShape);
+        String formattedShape = new ShapeFormatter().format(shape);
+        printer.print(formattedShape);
     }
 }

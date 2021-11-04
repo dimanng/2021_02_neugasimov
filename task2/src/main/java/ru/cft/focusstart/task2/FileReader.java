@@ -18,14 +18,17 @@ public class FileReader {
 
     private static final Logger log = LoggerFactory.getLogger(FileReader.class.getName());
 
-    public List<String> getFiguresArgs() throws FileNotFoundException {
-        List<String> list = new ArrayList();
+    public List<String> getFiguresArgs(){
+        List<String> list = new ArrayList<>();
         try (Scanner scanner = new Scanner(new FileInputStream(fileName))) {
             log.info("File {} opened", fileName);
             while(scanner.hasNext()){
                 list.add(scanner.nextLine());
             }
+        } catch (FileNotFoundException exception){
+            log.error(exception.getMessage());
         }
+        log.info("File read successfully");
         return list;
     }
 }

@@ -1,10 +1,15 @@
 package ru.cft.focusstart.task2;
 
-public class ShapeFormater {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class ShapeFormatter {
+    private static final Logger log = LoggerFactory.getLogger(ShapeFormatter.class.getName());
     public String format(Shape shape){
         StringBuilder stringBuilder = new StringBuilder();
         if(shape instanceof Circle){
             Circle circle = (Circle) shape;
+            log.info("Calculating circle parameters");
             stringBuilder
             .append("Тип фигуры: круг").append("\n")
             .append("Площадь: ").append(circle.getArea()).append(" кв.мм").append("\n")
@@ -13,6 +18,7 @@ public class ShapeFormater {
             .append("Диаметр: ").append(circle.getDiameter()).append(" мм").append("\n");
         } else if (shape instanceof Triangle){
             Triangle triangle = (Triangle) shape;
+            log.info("Calculating triangle parameters");
             stringBuilder
             .append("Тип фигуры: треугольник").append("\n")
             .append("Площадь: ").append(triangle.getArea()).append(" кв.мм").append("\n")
@@ -25,6 +31,7 @@ public class ShapeFormater {
             .append("Угол, противолежащий стороне 3: ").append(triangle.getAngle3()).append(" гр.").append("\n");
         } else if (shape instanceof Rectangle){
             Rectangle rectangle = (Rectangle) shape;
+            log.info("Calculating rectangle parameters");
             stringBuilder
             .append("Тип фигуры: прямоугольник").append("\n")
             .append("Площадь: ").append(rectangle.getArea()).append(" кв.мм").append("\n")
@@ -33,9 +40,9 @@ public class ShapeFormater {
             .append("Сторона 2: ").append(rectangle.getSide2()).append(" кв.мм").append("\n")
             .append("Диагональ: ").append(rectangle.getDiagonal()).append(" кв.мм").append("\n");
         } else {
+            log.error("Unknown type shape");
             throw new IllegalArgumentException("Неизвестный тип фигуры");
         }
-
         return stringBuilder.toString();
     }
 }

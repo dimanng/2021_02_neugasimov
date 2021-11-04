@@ -1,7 +1,10 @@
 package ru.cft.focusstart.task2;
 
-public class Rectangle implements Shape{
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class Rectangle implements Shape{
+    private static final Logger log = LoggerFactory.getLogger(Program.class.getName());
     private double side1;
     private double side2;
 
