@@ -1,7 +1,11 @@
-package ru.cft.focusstart.task2;
+package ru.cft.focusstart.task2.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.cft.focusstart.task2.shapes.Circle;
+import ru.cft.focusstart.task2.shapes.Rectangle;
+import ru.cft.focusstart.task2.shapes.Shape;
+import ru.cft.focusstart.task2.shapes.Triangle;
 
 import java.util.ArrayList;
 import java.util.List;

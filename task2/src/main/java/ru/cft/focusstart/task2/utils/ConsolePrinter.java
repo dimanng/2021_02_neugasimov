@@ -1,4 +1,4 @@
-package ru.cft.focusstart.task2;
+package ru.cft.focusstart.task2.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

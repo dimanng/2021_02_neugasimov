@@ -2,6 +2,8 @@ package ru.cft.focusstart.task2;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.cft.focusstart.task2.utils.ConsolePrinter;
+import ru.cft.focusstart.task2.utils.FilePrinter;
 
 import java.io.FileNotFoundException;
 
@@ -22,7 +24,7 @@ public class Program {
                     log.error("No input file name");
                     throw new IllegalArgumentException("Не указано имя файла с параметрами фигуры");
                 }
-                printer.Run(new ConsolePrinter(), args[1]);
+                printer.run(new ConsolePrinter(), args[1]);
                 log.info("Console print mode selected");
                 break;
             case("-f"):
@@ -30,7 +32,7 @@ public class Program {
                     log.error("No output file name");
                     throw new IllegalArgumentException("Не указано имя файла для вывода");
                 }
-                printer.Run(new FilePrinter(args[2]), args[1]);
+                printer.run(new FilePrinter(args[2]), args[1]);
                 log.info("File print mode selected");
                 break;
             default:

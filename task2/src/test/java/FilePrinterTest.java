@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.cft.focusstart.task2.FilePrinter;
+import ru.cft.focusstart.task2.utils.FilePrinter;
 
 import java.io.*;
 import java.util.ArrayList;
