@@ -14,49 +14,31 @@ public class ShapeParser {
 
     private static final Logger log = LoggerFactory.getLogger(ShapeParser.class.getName());
 
-    public Shape parse(List<String> listArgs) {
-        String shapesSwitch = listArgs.get(0);
+    private List<String> listArgs;
+
+    public ShapeParser(List<String> listArgs) {
+        this.listArgs = listArgs;
+    }
+
+    public ShapeParser() {
+    }
+
+    public Shape parse() {
+        ShapeType shapeType = ShapeType.valueOf(listArgs.get(0));
         List<Double> params = parseDoubleParams(listArgs.get(1));
-        switch (shapesSwitch){
-            case ("CIRCLE"):
+        checkCountParameters(params, shapeType);
+        switch (shapeType){
+            case CIRCLE:
                 log.info("Circle shape selected");
-                return parseCircle(params);
-            case ("TRIANGLE"):
+                return new Circle(params.get(0));
+            case TRIANGLE:
                 log.info("Triangle shape selected");
-                return parseTriangle(params);
-            case ("RECTANGLE"):
+                return new Triangle(params.get(0), params.get(1), params.get(2));
+            case RECTANGLE:
                 log.info("Rectangle shape selected");
-                return parseRectangle(params);
+                return new Rectangle(params.get(0), params.get(1));
+            default: throw new IllegalArgumentException("Неизвестный тип фигуры");
         }
-        log.error("Unsupported type shape");
-        throw new IllegalArgumentException("Неизвестный тип фигуры:" + shapesSwitch);
-    }
-
-    private Shape parseRectangle(List<Double> params) {
-        log.info("Reading rectangle parameters");
-        if(params.size() != 2){
-            log.error("Incorrect count parameters for rectangle");
-            throw new IllegalArgumentException("Неверное количество параметров для прямоугольника");
-        }
-        return new Rectangle(params.get(0), params.get(1));
-    }
-
-    private Shape parseTriangle(List<Double> params) {
-        log.info("Reading Triangle parameters");
-        if(params.size() != 3){
-            log.error("Incorrect count parameters for triangle");
-            throw new IllegalArgumentException("Неверное количество параметров для треугольника");
-        }
-        return new Triangle(params.get(0), params.get(1), params.get(2));
-    }
-
-    private Circle parseCircle(List<Double> params) {
-        log.info("Reading Circle parameters");
-        if(params.size() != 1){
-            log.error("Incorrect count parameters for circle");
-            throw new IllegalArgumentException("Неверное количество параметров для круга");
-        }
-        return new Circle(params.get(0));
     }
 
     private List<Double> parseDoubleParams(String s) {
@@ -65,5 +47,11 @@ public class ShapeParser {
             listDouble.add(Double.valueOf(s1));
         }
         return listDouble;
+    }
+
+    private void checkCountParameters(List<Double> params, ShapeType shapeType){
+        if(params.size() != shapeType.getParamsCount()){
+            throw new IllegalArgumentException("Неверное количество аргументов для фигуры " + shapeType.getRusName());
+        }
     }
 }

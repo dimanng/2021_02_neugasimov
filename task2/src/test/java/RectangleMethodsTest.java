@@ -36,7 +36,7 @@ public class RectangleMethodsTest {
     public void rectangleGetDiagonalTest(){
         Rectangle rectangle = new Rectangle(10, 5);
         double diagonal = rectangle.getDiagonal();
-        Assertions.assertEquals(11.18, diagonal);
+        Assertions.assertEquals(11.18, diagonal, 0.01);
     }
 
 }

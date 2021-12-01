@@ -12,7 +12,7 @@ public class ShapesPrinter {
     public void run(Printer printer, String inputFileName) throws FileNotFoundException {
         FileReader fileReader = new FileReader(inputFileName);
         List<String> listArgs = fileReader.getFiguresArgs();
-        Shape shape = new ShapeParser().parse(listArgs);
+        Shape shape = new ShapeParser(listArgs).parse();
         String formattedShape = shape.getInfo();
         printer.print(formattedShape);
     }

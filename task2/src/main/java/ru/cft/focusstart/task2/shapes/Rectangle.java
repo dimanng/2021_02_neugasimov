@@ -47,9 +47,9 @@ public class Rectangle implements Shape{
         Rectangle rectangle = this;
         log.info("Calculating rectangle parameters");
         stringBuilder
-                .append("Тип фигуры: прямоугольник").append("\n")
-                .append("Площадь: ").append(rectangle.getArea()).append(" кв.мм").append("\n")
-                .append("Периметр: ").append(rectangle.getPerimeter()).append(" мм").append("\n")
+                .append(typeConstant).append("прямоугольник").append("\n")
+                .append(squareConstant).append(rectangle.getArea()).append(" кв.мм").append("\n")
+                .append(perimeterConstant).append(rectangle.getPerimeter()).append(" мм").append("\n")
                 .append("Сторона 1: ").append(rectangle.getSide1()).append(" кв.мм").append("\n")
                 .append("Сторона 2: ").append(rectangle.getSide2()).append(" кв.мм").append("\n")
                 .append("Диагональ: ").append(rectangle.getDiagonal()).append(" кв.мм").append("\n");

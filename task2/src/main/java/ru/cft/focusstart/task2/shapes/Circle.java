@@ -38,9 +38,9 @@ public class Circle implements Shape {
         Circle circle = this;
         log.info("Calculating circle parameters");
         stringBuilder
-                .append("Тип фигуры: круг").append("\n")
-                .append("Площадь: ").append(circle.getArea()).append(" кв.мм").append("\n")
-                .append("Периметр: ").append(circle.getPerimeter()).append(" мм").append("\n")
+                .append(typeConstant).append("круг").append("\n")
+                .append(squareConstant).append(circle.getArea()).append(" кв.мм").append("\n")
+                .append(perimeterConstant).append(circle.getPerimeter()).append(" мм").append("\n")
                 .append("Радиус: ").append(circle.getRadius()).append(" мм").append("\n")
                 .append("Диаметр: ").append(circle.getDiameter()).append(" мм").append("\n");
         return stringBuilder.toString();

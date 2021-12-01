@@ -8,14 +8,14 @@ public class CircleMethodsTest {
     public void circleGetPerimeterTest(){
         Circle circle = new Circle(10);
         double perimeter = circle.getPerimeter();
-        Assertions.assertEquals(62.83, perimeter);
+        Assertions.assertEquals(62.83, perimeter, 0.01);
     }
 
     @Test
     public void circleGetAreaTest(){
         Circle circle = new Circle(10);
         double area = circle.getArea();
-        Assertions.assertEquals(314.16, area);
+        Assertions.assertEquals(314.16, area, 0.01);
     }
 
     @Test

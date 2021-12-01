@@ -68,9 +68,9 @@ public class Triangle implements Shape {
         Triangle triangle = this;
         log.info("Calculating triangle parameters");
         stringBuilder
-                .append("Тип фигуры: треугольник").append("\n")
-                .append("Площадь: ").append(triangle.getArea()).append(" кв.мм").append("\n")
-                .append("Периметр: ").append(triangle.getPerimeter()).append(" мм").append("\n")
+                .append(typeConstant).append("треугольник").append("\n")
+                .append(squareConstant).append(triangle.getArea()).append(" кв.мм").append("\n")
+                .append(perimeterConstant).append(triangle.getPerimeter()).append(" мм").append("\n")
                 .append("Сторона 1: ").append(triangle.getSide1()).append(" мм").append("\n")
                 .append("Сторона 2: ").append(triangle.getSide2()).append(" мм").append("\n")
                 .append("Сторона 3: ").append(triangle.getSide3()).append(" мм").append("\n")
