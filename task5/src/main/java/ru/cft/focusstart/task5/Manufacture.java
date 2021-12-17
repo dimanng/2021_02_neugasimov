@@ -10,19 +10,22 @@ public class Manufacture {
     public static final Logger log = LoggerFactory.getLogger(Program.class.getName());
     private final int producerCount;
     private final int consumerCount;
-    private final int producerTime = 1500;
-    private final int consumerTime = 2000;
-    private final int storageSize = 10;
-//TODO properties - файл
+    private final int producerTime;
+    private final int consumerTime;
+    private final int storageSize;
 
     public AtomicInteger atomicInteger = new AtomicInteger(0);
 
-    private final List<String> resourceList = new ArrayList<>();
+    public final List<String> resourceList = new ArrayList<>();
     public final Object manufactureMonitor = new Object();
 
-    public Manufacture(int producerCount, int consumerCount) {
-        this.producerCount = producerCount;
-        this.consumerCount = consumerCount;
+    public Manufacture() {
+        ManufactureProperties manufactureProperties = new ManufactureProperties();
+        producerCount = manufactureProperties.getProducerCount();
+        consumerCount = manufactureProperties.getConsumerCount();
+        producerTime = manufactureProperties.getProducerTime();
+        consumerTime = manufactureProperties.getConsumerTime();
+        storageSize = manufactureProperties.getStorageSize();
     }
 
     public int getProducerTime() {
@@ -36,13 +39,13 @@ public class Manufacture {
     public void startManufacture() {
         for (int i = 1; i <= producerCount; i++) {
             Thread producerThread = new Thread(new Producer(this));
-            producerThread.setName("Producer " + i);
+            producerThread.setName("Производитель " + i);
             producerThread.start();
         }
 
         for (int i = 1; i <= consumerCount; i++) {
             Thread consumerThread = new Thread(new Consumer(this));
-            consumerThread.setName("Consumer " + i);
+            consumerThread.setName("Потребитель " + i);
             consumerThread.start();
         }
     }
@@ -55,7 +58,6 @@ public class Manufacture {
             resourceList.add(resource);
             manufactureMonitor.notifyAll();
         }
-        System.out.println("Добавлен ресурс " + resource + " Размер хранилища: " + resourceList.size());
     }
 
     public String getResource() throws InterruptedException {
